@@ -61,6 +61,26 @@ public class Department {
         }
     }
 
+    /*
+     * "Forced vacation." That is, for all employees that take vacation (salaried Employees),
+     * make them take vacation. How can we find out what exact type we have here???
+     */
+    public void holidayBreak() {
+        for (int i = 0; i < currentIndex; i++) {
+            // downcast the Employee reference (employ[i]) to specific type SalariedEmployee
+            // then we can call SalariedEmployee-specific methods (like takeVacation)
+            // First, we ask employees[i], "Are you really a SalariedEmployee?"
+            // instanceof is an "IS-A" check
+            if(employees[i] instanceof SalariedEmployee) {
+                // downcast and method call in one shot
+                // ((SalariedEmployee) employees[i]).takeVacation();
+
+                SalariedEmployee semp = (SalariedEmployee) employees[i];
+                semp.takeVacation();
+            }
+        }
+    }
+
     // helper method to add an Employee to the array
     public void addEmployee(Employee emp) {
         employees[currentIndex++] = emp;
