@@ -10,6 +10,9 @@ package com.hr.personnel.client;
 
 import com.hr.personnel.Department;
 import com.hr.personnel.Employee;
+import com.hr.personnel.HourlyEmployee;
+import com.hr.personnel.SalariedEmployee;
+
 import java.time.LocalDate;
 
 /**
@@ -23,8 +26,10 @@ class HRClient {
         System.out.println(dept);
 
         // add Employees to it
-        dept.addEmployee(new Employee("Jason", LocalDate.of(1990, 8, 24)));
-        dept.addEmployee(new Employee("Julie", LocalDate.of(2000, 2, 2)));
+        dept.addEmployee(new SalariedEmployee("Jason", LocalDate.of(1990, 8, 24), 2250.0));
+        dept.addEmployee(new HourlyEmployee("Julie", LocalDate.of(2000, 2, 2), 65.0, 12.0));
+        dept.addEmployee(new SalariedEmployee("Caleb", LocalDate.of(2016, 5, 16), 1600.0));
+        dept.addEmployee(new HourlyEmployee("Hannah", LocalDate.of(2018, 2, 25), 25.0, 20.0));
 
         // list its Employees
         System.out.println("\nList employees:");
@@ -33,5 +38,9 @@ class HRClient {
         // make its Employees work
         System.out.println("\nMake employees work:");
         dept.workEmployees();
+
+        // pay all Employees
+        System.out.println("\nPay employees:");
+        dept.payEmployees();
     }
 }

@@ -30,10 +30,12 @@ public class Department {
     private int currentIndex = 0;  // for dealing with the array
 
     // constructors
-    public Department() {
+    public Department() { // a superclass ctor is always called, whether you say this or not!
+        super();
     }
 
     public Department(String name, String location) {
+        super();          // a superclass ctor is always called, whether you say this or not!
         setName(name);
         setLocation(location);
     }
@@ -50,6 +52,12 @@ public class Department {
     public void workEmployees() {
         for (int i = 0; i < currentIndex; i++) {
             employees[i].work();
+        }
+    }
+
+    public void payEmployees() {
+        for (int i = 0; i < currentIndex; i++) {
+            employees[i].pay();
         }
     }
 
@@ -75,7 +83,8 @@ public class Department {
         this.location = location;
     }
 
+    @Override
     public String toString() {
-        return "Department: name=" + getName() + ", location=" + getLocation();
+        return getClass().getSimpleName() + ": name= " + getName() + ", location= " + getLocation();
     }
 }
