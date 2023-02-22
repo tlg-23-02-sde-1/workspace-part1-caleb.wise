@@ -5,13 +5,17 @@ import gov.irs.TaxPayer;
 import java.time.LocalDate;
 
 public class SalariedEmployee extends Employee{
-
     private double salary;
 
     // business methods
-    @Override
+    @Override // interface TaxPayer
     public void pay() {
         System.out.println(getName() + " is paid salary " + getSalary());
+    }
+
+    @Override // interface TaxPayer
+    public void fileReturn() {
+        System.out.println("Return filed electronically.");
     }
 
     public void takeVacation() {

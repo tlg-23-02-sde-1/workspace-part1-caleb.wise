@@ -5,9 +5,7 @@ import gov.irs.TaxPayer;
 import java.time.LocalDate;
 
 public class HourlyEmployee extends Employee{
-
     private double rate;
-
     private double hours;
 
     // business methods
