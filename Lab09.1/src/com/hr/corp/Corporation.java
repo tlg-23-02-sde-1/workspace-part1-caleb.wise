@@ -33,6 +33,11 @@ public class Corporation implements TaxPayer {
         System.out.println("Return not filed - we sent our lawyers instead.");
     }
 
+    @Override  // interface TaxPayer
+    public double getStandardDeduction() {
+        return 1_000_000_000.0;
+    }
+
     public String getName() {
         return name;
     }

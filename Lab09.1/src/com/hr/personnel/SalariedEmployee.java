@@ -18,6 +18,11 @@ public class SalariedEmployee extends Employee{
         System.out.println("Return filed electronically.");
     }
 
+    @Override // interface TaxPayer
+    public double getStandardDeduction() {
+        return 10_000.0;
+    }
+
     public void takeVacation() {
         System.out.println(getName() + " is on vacation.");
     }
