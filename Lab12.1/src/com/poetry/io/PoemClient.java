@@ -8,8 +8,9 @@
 
 package com.poetry.io;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class PoemClient {
 
@@ -18,7 +19,7 @@ public class PoemClient {
      */
     public static void main(String[] args) {
         // readPoem();
-        // writePoem();
+        writePoem();
     }
 
     /**
@@ -34,13 +35,26 @@ public class PoemClient {
      * The try-with-resources below allows you to initialize the stream and auto-close it.
      */
     private static void readPoem() {
-        // TODO: initialize 'reader' variable and complete the try block
-        try (BufferedReader reader = null) {
+        try {
+            String poem = Files.readString(Path.of("famous-poem.txt"));
+            System.out.println(poem);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
 
+        }
+
+        /*
+        try (BufferedReader reader = new BufferedReader(new FileReader("famous-poem.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+        */
     }
 
     /**
@@ -55,6 +69,26 @@ public class PoemClient {
      * Use a try-with-resources to initialize the stream and auto-close it.
      */
     private static void writePoem() {
-        // TODO
+        String haiku = "wait for the right time\n" +
+                "when the instruction is tense\n" +
+                "now! kick Jay as host";
+
+        try {
+            Files.writeString(Path.of("haiku.txt"), haiku);
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*
+        try (PrintWriter out = new PrintWriter(new FileWriter("haiku.txt"))) {
+            out.println("wait for the right time");
+            out.println("when the instruction is tense");
+            out.println("now! kick Jay as host");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
     }
 }
